@@ -1,0 +1,28 @@
+Classes:	numberGenerator class		->	number rand, array handler, generating any type of array (A, V - Shapes)
+			numberSort class			->	getting array and sorting them in any included method (5 types: Insertion, Shell, Selection, Heap, Quick)
+			fileHandler class			->	getting data from sorting
+			timer class					->	time menagment
+			menuHandler class			->	menu class, with data checking, schemas running, and menagment of all classes;
+Data schemas:
+	n data tests:
+		-> n: 10k elements, 100k elements, 250k elements, 500k elements, 1m elements, 10m elements, [...]
+	with X to Y range:
+		-> (X, Y), where X = minimum, Y = maksimum (if Y>X swap)
+		-> (0,1k), (0,10k), (0,25k), (0,50k), (0,100k)
+
+Test schemas:
+	10 tests for each (n,(X,Y)) data sets, saving whole data to array->fileHandler printer(testX.txt, X is number of test) with form:
+		-> SCHEMA #1: All data
+		Type: typeOfSort
+		Data set: n numbers x-y range of numbers
+		Type of data: type (rand, nearly sorted, sorted, reverted, A-Shape, V-Shape)
+		Times:	T0	T1	T2	T3	T4	T5	T6	T7	T8	T9
+		MidTime: tMiddle
+		-> SCHEMA #2: Data to export to comparision [type[TypeOfData][Range]]
+		//n nubmers
+		
+		//times
+
+		-> SCHEMA #3: data for general comparision; run allTests();
+		For (0,10k) range set, 100k and 1m elements numbers sets
+		x5 types of sorting(Sequence: insertion, shell, selection, heap, quick)	

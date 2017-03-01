@@ -1,0 +1,32 @@
+#pragma once
+class numberGenerator
+{
+private:
+	int numbers;
+	int minimumValue;
+	int maximumValue;
+	int *arr;
+	int randNumber();
+	void checkIfArrayIsSet();
+protected:
+	//settery
+	void setNullArray();
+	void setNumbers(int);
+	void setMinimumValue(int);
+	void setMaximumValue(int);
+	//gettery
+	int getNumbers();
+	int getMinimumValue();
+	int getMaximumValue();
+	int *getCopyOfArray();
+	int *getPrimalArray();
+	//
+	int* genereteNumbers();
+	//specTypes
+	void aShape();
+	void vShape();
+public:
+	numberGenerator(int, int, int);
+	~numberGenerator();
+};
+
