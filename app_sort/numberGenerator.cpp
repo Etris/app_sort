@@ -86,7 +86,7 @@ void numberGenerator::genereteNumbers()
 }
 void numberGenerator::aShape()
 {
-
+	//
 }
 void numberGenerator::vShape() 
 {
