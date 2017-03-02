@@ -21,7 +21,7 @@ protected:
 	int *getCopyOfArray();
 	int *getPrimalArray();
 	//
-	int* genereteNumbers();
+	void genereteNumbers();
 	//specTypes
 	void aShape();
 	void vShape();

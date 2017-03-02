@@ -11,10 +11,11 @@ protected:
 	void resetArray();
 	void setNumbers(int);
 	int getNumbers();
-	void getArray();
+	void setArray(int[]);
 	void insertionSort();
 	void selectionSort();
 	void shellSort();
 	void heapSort();
-	void quickSort();
+	void quickSort(int, int);
+	bool checkIfSorted();
 };

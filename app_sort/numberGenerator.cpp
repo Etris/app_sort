@@ -74,7 +74,7 @@ int* numberGenerator::getPrimalArray()
 {
 	return arr;
 }
-int* numberGenerator::genereteNumbers()
+void numberGenerator::genereteNumbers()
 {
 	srand(time(nullptr));
 	checkIfArrayIsSet();
