@@ -16,6 +16,7 @@ protected:
 	void setOutputType(int);
 	void setOutputSortType(int);
 	void setOutputData(std::string);
+	void buildOutputData(std::string);
 	std::string getFileName();
 	int getOutputType();
 	int getOutputSortType();

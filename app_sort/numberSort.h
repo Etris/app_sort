@@ -17,5 +17,6 @@ protected:
 	void shellSort();
 	void heapSort();
 	void quickSort(int, int);
+	void quickSortIter();
 	bool checkIfSorted();
 };

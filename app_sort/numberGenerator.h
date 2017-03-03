@@ -25,8 +25,11 @@ protected:
 	//specTypes
 	void aShape();
 	void vShape();
+	void sorted();
+	void nearlySorted();
+	void reverted();
 public:
-	numberGenerator(int, int, int);
+	numberGenerator();
 	~numberGenerator();
 };
 

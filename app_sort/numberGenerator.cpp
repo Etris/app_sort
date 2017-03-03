@@ -3,13 +3,9 @@
 #include <time.h>
 
 
-numberGenerator::numberGenerator(int numbers, int min, int max)
+numberGenerator::numberGenerator()
 {
 	setNullArray();
-	setNumbers(numbers);
-	setMinimumValue(min);
-	setMaximumValue(max);
-	genereteNumbers();
 }
 
 numberGenerator::~numberGenerator()
