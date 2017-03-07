@@ -20,7 +20,9 @@ protected:
 	void startMenu();
 	void schemasMenu();
 	void newSchemaMenu();
-	int checkerInt(int);
+	void schemaMenuElements();
+	void schemaMenuRange();
+	int checkerInt(int, int);
 	void testChoiceMenu();
 	void dataSetter();
 	void runTest(int);
