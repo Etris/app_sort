@@ -4,12 +4,13 @@
 //public zone:
 numberSort::numberSort()
 {
+	setNumbers(0);
 }
 
 
 numberSort::~numberSort()
 {
-
+	resetArray();
 }
 //protected zone:
 void numberSort::resetArray() {

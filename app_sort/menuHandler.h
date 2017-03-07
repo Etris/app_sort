@@ -23,6 +23,8 @@ protected:
 	int checkerInt(int);
 	void testChoiceMenu();
 	void dataSetter();
-
+	void runTest(int);
+	void runAllTests();
+	void exportData(int, int, double);
 };
 

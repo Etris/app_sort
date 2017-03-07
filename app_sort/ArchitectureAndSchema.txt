@@ -5,7 +5,7 @@ Classes:	numberGenerator class		->	number rand, array handler, generating any ty
 			menuHandler class			->	menu class, with data checking, schemas running, and menagment of all classes;
 Data schemas:
 	n data tests:
-		-> n: 10k elements, 100k elements, 250k elements, 500k elements, 1m elements, 10m elements, [...]
+		-> n: 10k elements, 100k elements, 250k elements, 750k, 500k elements, 1m elements, 2m elements, 5m elements, 10m elements, 20m elements [...]
 	with X to Y range:
 		-> (X, Y), where X = minimum, Y = maksimum (if Y>X swap)
 		-> (0,1k), (0,10k), (0,25k), (0,50k), (0,100k)
