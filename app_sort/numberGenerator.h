@@ -8,7 +8,7 @@ private:
 	int *arr;
 	int randNumber();
 	void checkIfArrayIsSet();
-protected:
+public:
 	//settery
 	void setNullArray();
 	void setNumbers(int);
@@ -28,7 +28,6 @@ protected:
 	void sorted();
 	void nearlySorted();
 	void reverted();
-public:
 	numberGenerator();
 	~numberGenerator();
 };

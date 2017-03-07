@@ -22,9 +22,10 @@ protected:
 	void newSchemaMenu();
 	void schemaMenuElements();
 	void schemaMenuRange();
+	void schemaMenuType();
 	int checkerInt(int, int);
 	void testChoiceMenu();
-	void dataSetter();
+	void dataSetter(int, int);
 	void runTest(int);
 	void runAllTests();
 	void exportData(int, int, double);

@@ -1,13 +1,12 @@
 #pragma once
 class numberSort
 {
-public:
-	numberSort();
-	~numberSort();
 private:
 	int numbers;
 	int* arr;
-protected:
+public:
+	numberSort();
+	~numberSort();
 	void resetArray();
 	void setNumbers(int);
 	int getNumbers();

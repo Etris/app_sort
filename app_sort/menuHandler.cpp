@@ -39,6 +39,7 @@ void menuHandler::schemasMenu()
 
 void menuHandler::newSchemaMenu()
 {
+
 }
 
 void menuHandler::schemaMenuElements()
@@ -55,6 +56,11 @@ void menuHandler::schemaMenuRange()
 	//cin;
 }
 
+void menuHandler::schemaMenuType()
+{
+	//rand, nearly sorted, sorted, reverted, A-Shape, V-Shape
+}
+
 int menuHandler::checkerInt(int set, int value)
 {
 	switch (set) {
@@ -64,12 +70,17 @@ int menuHandler::checkerInt(int set, int value)
 			return value;
 		}
 		else {
-
+			this->schemaMenuElements();
 		}
 		break;
 	//set 2: range
 	case 2:
-
+		if (value >= 0 && value <= 9000000000) {
+			return value;
+		}
+		else {
+			this->schemaMenuRange();
+		}
 		break;
 	default:
 
@@ -81,8 +92,13 @@ void menuHandler::testChoiceMenu()
 {
 }
 
-void menuHandler::dataSetter()
+void menuHandler::dataSetter(int set, int value)
 {
+	switch (set) {
+		//set 1: numbers
+			
+		//set 2: range
+	}
 }
 
 void menuHandler::runTest(int)
