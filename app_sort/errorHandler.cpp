@@ -48,5 +48,5 @@ void errorHandler::clearScreen()
 
 int errorHandler::forceExit()
 {
-
+	return 0;
 }

@@ -3,20 +3,21 @@
 #include "numberGenerator.h"
 #include "numberSort.h"
 #include "timer.h"
+#include "errorHandler.h"
 class menuHandler
 {
-public:
-	menuHandler();
-	~menuHandler();
 private:
 	int numbers;
 	int minimum;
 	int maximum;
-	numberGenerator genControler;
-	numberSort sortControler;
-	timer timerControler;
-	fileHandler fileControler;
-protected:
+	numberGenerator *genControler = new numberGenerator;
+	numberSort *sortControler = new numberSort;
+	timer *timerControler = new timer;
+	fileHandler *fileControler = new fileHandler;
+	errorHandler *errorMsg = new errorHandler;
+public:
+	menuHandler();
+	~menuHandler();
 	void startMenu();
 	void schemasMenu();
 	void newSchemaMenu();

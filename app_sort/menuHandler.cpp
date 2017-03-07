@@ -10,7 +10,7 @@ menuHandler::menuHandler()
 
 menuHandler::~menuHandler()
 {
-
+	delete genControler, sortControler, timerControler, fileControler, errorMsg;
 }
 
 void menuHandler::startMenu()
