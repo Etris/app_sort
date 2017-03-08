@@ -26,6 +26,10 @@ void numberGenerator::checkIfArrayIsSet()
 		arr = NULL;
 	}
 }
+void numberGenerator::sort()
+{
+
+}
 /* Protection section:: */
 void numberGenerator::setNullArray()
 {
@@ -82,9 +86,70 @@ void numberGenerator::genereteNumbers()
 }
 void numberGenerator::aShape()
 {
-	//
+	this->checkIfArrayIsSet();
+	int realNumbers = getNumbers();
+	setNumbers(getNumbers() / 2);
+	this->genereteNumbers();
+	this->sort();
+	int *copyOfArray = new int[getNumbers()];
+	std::copy(arr, arr + getNumbers(), copyOfArray);
+	this->checkIfArrayIsSet();
+	setNumbers(realNumbers);
+	arr = new int[getNumbers()];
+	for (int i = 0; i < getNumbers(); i++) {
+		if (i < getNumbers() / 2) {
+			arr[i] = copyOfArray[i];
+		}
+		else {
+			arr[i] = copyOfArray[(getNumbers() / 2) - 1 - i];
+		}
+	}
 }
 void numberGenerator::vShape() 
 {
+	this->checkIfArrayIsSet();
+	int realNumbers = getNumbers();
+	setNumbers(getNumbers() / 2);
+	this->genereteNumbers();
+	this->sort();
+	int *copyOfArray = new int[getNumbers()];
+	std::copy(arr, arr + getNumbers(), copyOfArray);
+	this->checkIfArrayIsSet();
+	setNumbers(realNumbers);
+	arr = new int[getNumbers()];
+	for (int i = 0; i < getNumbers(); i++) {
+		if (i < getNumbers() / 2) {
+			arr[i] = copyOfArray[(getNumbers() / 2) - 1 - i];
+		}
+		else {
+			arr[i] = copyOfArray[i];
+		}
+	}
+}
 
+void numberGenerator::sorted()
+{
+	this->checkIfArrayIsSet();
+	this->genereteNumbers();
+	this->sort();
+}
+
+void numberGenerator::nearlySorted()
+{
+
+}
+
+void numberGenerator::reverted()
+{
+	this->sorted();
+	for (int i = 0; i < getNumbers(); i++) {
+		swap(&arr[i], &arr[getNumbers() - 1 - i]);
+	}
+}
+
+void numberGenerator::swap(int * x, int * y)
+{
+	int tmp = *x;
+	*x = *y;
+	*y = tmp;
 }

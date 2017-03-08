@@ -8,6 +8,7 @@ private:
 	int *arr;
 	int randNumber();
 	void checkIfArrayIsSet();
+	void sort();
 public:
 	//settery
 	void setNullArray();
@@ -20,7 +21,7 @@ public:
 	int getMaximumValue();
 	int *getCopyOfArray();
 	int *getPrimalArray();
-	//
+	//main
 	void genereteNumbers();
 	//specTypes
 	void aShape();
@@ -28,6 +29,9 @@ public:
 	void sorted();
 	void nearlySorted();
 	void reverted();
+	//additional fc
+	void swap(int*, int*);
+	//cons & decons
 	numberGenerator();
 	~numberGenerator();
 };
