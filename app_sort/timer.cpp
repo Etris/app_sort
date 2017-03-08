@@ -13,4 +13,3 @@ double timer::end() {
 double timer::getLastTime() {
 	return elapsed_seconds.count();
 }
-
