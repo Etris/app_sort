@@ -1,6 +1,7 @@
 #include "fileHandler.h"
 #include <iostream>
 #include <string>
+#include <fstream>
 
 fileHandler::fileHandler()
 {
@@ -18,13 +19,18 @@ void fileHandler::convertTime(double var)
 
 void fileHandler::setFileName(std::string name)
 {
-	fileName = name;
+	fileName = name + ".txt";
 }
 
 void fileHandler::buildOutputData(std::string text)
 {
-	data += ";";
-	data += text;
+	if (data.empty() == true) {
+		data += text;
+	}
+	else {
+		data += ";";
+		data += text;
+	}
 }
 
 std::string fileHandler::getFileName()
@@ -34,6 +40,11 @@ std::string fileHandler::getFileName()
 
 void fileHandler::saveDataToFile()
 {
-
+	std::ofstream fileOutputHandler;
+	fileOutputHandler.open(getFileName());
+	if (fileOutputHandler.good() == true) {
+		fileOutputHandler << data;
+	}
+	fileOutputHandler.close();
 }
 

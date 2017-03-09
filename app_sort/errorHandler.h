@@ -5,9 +5,9 @@ class errorHandler
 public:
 	errorHandler();
 	~errorHandler();
+	void setErrorType(int);
 private:
 	std::string errorMsg;
-	void setErrorType(int);
 	void setErrorText(std::string);
 	void pushError();
 	void clearScreen();

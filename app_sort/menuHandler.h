@@ -4,12 +4,14 @@
 #include "numberSort.h"
 #include "timer.h"
 #include "errorHandler.h"
+#include <string>
 class menuHandler
 {
 private:
 	int numbers;
 	int minimum;
 	int maximum;
+	std::string name = "";
 	numberGenerator *genControler = new numberGenerator;
 	numberSort *sortControler = new numberSort;
 	timer *timerControler = new timer;
@@ -29,6 +31,6 @@ public:
 	void dataSetter(int, int);
 	void runTest(int);
 	void runAllTests();
-	void exportData(int, int, double);
+	void exportData(double);
 };
 

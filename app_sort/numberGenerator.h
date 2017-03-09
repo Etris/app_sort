@@ -8,9 +8,12 @@ private:
 	int *arr;
 	int randNumber();
 	void checkIfArrayIsSet();
-	void sort();
+	void sort(int, int);
+	void reSort(int, int);
+	int *copyOfArray;
 public:
 	//settery
+	void setCopyArrayNull();
 	void setNullArray();
 	void setNumbers(int);
 	void setMinimumValue(int);
@@ -24,12 +27,14 @@ public:
 	//main
 	void genereteNumbers();
 	//specTypes
+	void constType();
 	void aShape();
 	void vShape();
 	void sorted();
 	void nearlySorted();
 	void reverted();
 	//additional fc
+	void printArr(int);
 	void swap(int*, int*);
 	//cons & decons
 	numberGenerator();

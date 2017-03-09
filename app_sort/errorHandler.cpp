@@ -16,15 +16,15 @@ void errorHandler::setErrorType(int type)
 	switch (type) {
 		//wrong data
 	case 1:
-		value = "";
+		value = "ERROR: You enter wrong type of data or wrong number!";
 		break;
 		//data not set
 	case 2:
-		value = "";
+		value = "ERROR: range or amount of numbers is not setted!";
 		break;
 		//array error
 	case 3:
-		
+		value = "ERROR: Array not setted!";
 		break;
 	}
 	this->setErrorText(value);

@@ -8,9 +8,11 @@ private:
 public:
 	numberSort();
 	~numberSort();
+	void setNullArray();
 	void resetArray();
 	void setNumbers(int);
 	int getNumbers();
+	void printArr(int);
 	void setArray(int[]);
 	void insertionSort();
 	void selectionSort();

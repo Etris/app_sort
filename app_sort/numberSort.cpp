@@ -17,17 +17,31 @@ numberSort::~numberSort()
 {
 	resetArray();
 }
-void numberSort::resetArray() {
-	if (arr != NULL) {
-		delete[] arr;
-	}
+void numberSort::setNullArray()
+{
 	arr = NULL;
+}
+void numberSort::resetArray() {
+	if (arr != NULL)
+	{
+		for (int i = 0; i < getNumbers() - 1; i++) {
+			arr[i] = NULL;
+		}
+		delete[] arr;
+		arr = NULL;
+	}
 }
 void numberSort::setNumbers(int value) {
 	numbers = value;
 }
 int numberSort::getNumbers() {
 	return numbers;
+}
+void numberSort::printArr(int x)
+{
+	for (int i = 0; i < x; i++) {
+		std::cout << arr[i] << ";";
+	}
 }
 void numberSort::setArray(int tab[]) {
 	arr = new int[getNumbers()];
@@ -47,9 +61,7 @@ void numberSort::insertionSort() {
 }
 void numberSort::shellSort() {
 	int tmp, i, j, x;
-	for (tmp = 1; tmp < getNumbers(); tmp = 3 * tmp + 1) {
-		tmp = tmp / 9;
-	}
+	for (tmp = 1; tmp <= getNumbers() / 3; tmp = 3 * tmp + 1){}
 	while (tmp > 0) {
 		for (int i = getNumbers() - tmp - 1; i >= 0; i--) {
 			x = arr[i];
@@ -63,6 +75,24 @@ void numberSort::shellSort() {
 	tmp /= 3;
 	}
 }
+/*
+int tmp, i, j, x;
+for (tmp = 1; tmp < getNumbers(); tmp = 3 * tmp + 1) {
+tmp = tmp / 9;
+}
+while (tmp > 0) {
+for (int i = getNumbers() - tmp - 1; i >= 0; i--) {
+x = arr[i];
+j = i + tmp;
+while ((j < getNumbers()) && (x > arr[j])) {
+arr[j - tmp] = arr[j];
+j = j + tmp;
+}
+arr[j - tmp] = x;
+}
+tmp /= 3;
+}
+*/
 void numberSort::heapSortMax(int n, int i)
 {
 
@@ -81,38 +111,39 @@ void numberSort::heapSortMax(int n, int i)
 		heapSortMax(n, largest);
 	}
 }
-void numberSort::heapSortBuild(int)
+void numberSort::heapSortBuild(int size)
 {
-	for (int i = getNumbers() / 2; i>0; i--)
-		heapSortMax(getNumbers(), i);
+	for (int i = size / 2; i>0; i--) heapSortMax(size, i);
 }
 void numberSort::heapSort()
 {
 	int size = getNumbers();
-	int temp;
 	heapSortBuild(size);
-	for (int i = size; i>1; i--)
+	for (int i = size - 1; i >= 0; i--)
 	{
-		temp = arr[i];
-		arr[i] = arr[1];
-		arr[1] = temp;
-		size--;
-		heapSortMax(size, 1);
+		swap(&arr[0], &arr[i]);
+		heapSortMax(i, 0);
 	}
 }
-void numberSort::quickSort(int right, int left)
+void numberSort::quickSort(int left, int right)
 {
-	if (right <= left) return;
-	int i = left, j = right + 1;
-	int pivot = arr[(left + right) / 2];
-	while (1) {
-		while (pivot > arr[++i]);
-		while (pivot < arr[--j]);
-		if (i <= j) std::swap(arr[i], arr[j]);
-		else break;
-	}
-	if (j > left) quickSort(left, j);
-	if (i < right) quickSort(i, right);
+	int i = left;
+	int j = right;
+	int x = arr[(left + right) / 2];
+	do{
+		while (arr[i] < x)
+			i++;
+		while (arr[j] > x)
+			j--;
+		if (i <= j)
+		{
+			swap(&arr[i], &arr[j]);
+			i++;
+			j--;
+		}
+	} while (i <= j);
+	if (left < j) quickSort(left, j);
+	if (right > i) quickSort(i, right);
 }
 void numberSort::quickSortIter()
 {

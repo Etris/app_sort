@@ -1,5 +1,6 @@
 #include "menuHandler.h"
 #include <iostream>
+#include <Windows.h>
 using namespace std;
 
 menuHandler::menuHandler()
@@ -18,6 +19,7 @@ void menuHandler::startMenu()
 	int x;
 	cout << "Do you want use one of schema or make new one?\n[1]Schemas\n[2]New schema\n\nUse: ";
 	// cin
+	cin >> x;
 	switch (x) {
 	case 1:
 		this->schemasMenu();
@@ -34,7 +36,10 @@ void menuHandler::startMenu()
 
 void menuHandler::schemasMenu()
 {
-	cout << "";
+	schemaMenuElements();
+	schemaMenuRange();
+	schemaMenuType();
+	testChoiceMenu();
 }
 
 void menuHandler::newSchemaMenu()
@@ -45,20 +50,105 @@ void menuHandler::newSchemaMenu()
 void menuHandler::schemaMenuElements()
 {
 	// 10k elements, 100k elements, 250k elements, 750k, 500k elements, 1m elements, 2m elements, 5m elements, 10m elements, 20m elements
-	cout << "choose number of elements:\n[1]10k\[2]100k elements\n[3]250k elements\n[4]500k elements\n[5]750k\n[6]1m\n[7]2m\n[8]5m\n[9]10m\n[10]20m\nUse: ";
-	//cin
+	cout << "choose number of elements:\n[1]10k\n[2]100k elements\n[3]250k elements\n[4]500k elements\n[5]750k\n[6]1m\n[7]2m\n[8]5m\n[9]10m\n[10]20m\nUse: ";
+	int x;
+	cin >> x;
+	switch (x) {
+	case 1:
+		dataSetter(1, 10000);
+		break;
+	case 2:
+		dataSetter(1, 100000);
+		break;
+	case 3:
+		dataSetter(1, 250000);
+		break;
+	case 4:
+		dataSetter(1, 500000);
+		break;
+	case 5:
+		dataSetter(1, 750000);
+		break;
+	case 6:
+		dataSetter(1, 1000000);
+		break;
+	case 7:
+		dataSetter(1, 2000000);
+		break;
+	case 8:
+		dataSetter(1, 5000000);
+		break;
+	case 9:
+		dataSetter(1, 10000000);
+		break;
+	case 10:
+		dataSetter(1, 20000000);
+		break;
+	default:
+		errorMsg->setErrorType(1);
+		schemaMenuElements();
+	}
 }
 
 void menuHandler::schemaMenuRange()
 {
 	//(0,1k), (0,10k), (0,25k), (0,50k), (0,100k)
 	cout << "choose range of elements:\n[1]0-1k\n[2]0-10k\n[3]0-25k\n[4]0-50k\n[5]0-100k\nUse: ";
-	//cin;
+	int x;
+	cin >> x;
+	switch (x) {
+	case 1:
+		dataSetter(2, 1000);
+		break;
+	case 2:
+		dataSetter(2, 10000);
+		break;
+	case 3:
+		dataSetter(2, 25000);
+		break;
+	case 4:
+		dataSetter(2, 50000);
+		break;
+	case 5:
+		dataSetter(2, 100000);
+		break;
+	default:
+		errorMsg->setErrorType(1);
+		schemaMenuRange();
+		break;
+	}
 }
 
 void menuHandler::schemaMenuType()
 {
-	//rand, nearly sorted, sorted, reverted, A-Shape, V-Shape
+	//rand, sorted, reverted, A-Shape, V-Shape
+	cout << "choose type of data:\n[1]random\n[2]sorted\n[3]reverted\n[4]A-Shape\n[5]V-Shape\n[6]Const type\nUse: ";
+	int x;
+	cin >> x;
+	switch (x) {
+	case 1:
+		dataSetter(3, 1);
+		break;
+	case 2:
+		dataSetter(3, 2);
+		break;
+	case 3:
+		dataSetter(3, 3);
+		break;
+	case 4:
+		dataSetter(3, 4);
+		break;
+	case 5:
+		dataSetter(3, 5);
+		break;
+	case 6:
+		dataSetter(3, 6);
+		break;
+	default:
+		errorMsg->setErrorType(1);
+		schemaMenuType();
+		break;
+	}
 }
 
 int menuHandler::checkerInt(int set, int value)
@@ -90,25 +180,244 @@ int menuHandler::checkerInt(int set, int value)
 
 void menuHandler::testChoiceMenu()
 {
+	int x;
+	cout << "Sort methods:\n[1]Quick\n[2]Shell\n[3]Insertion\n[4]Selection\n[5]Heap\n[6]All methods\nUse:";
+	cin >> x;
+	switch (x) {
+	case 1:
+		runTest(1);
+		break;
+	case 2:
+		runTest(2);
+		break;
+	case 3:
+		runTest(3);
+		break;
+	case 4:
+		runTest(4);
+		break;
+	case 5:
+		runTest(5);
+		break;
+	case 6:
+		runAllTests();
+	default:
+		errorMsg->setErrorType(1);
+		testChoiceMenu();
+		break;
+	}
 }
 
 void menuHandler::dataSetter(int set, int value)
 {
 	switch (set) {
 		//set 1: numbers
-			
+	case 1:
+		genControler->setNumbers(value);
+		sortControler->setNumbers(value);
+		name = "-" + std::to_string(value);
+		break;
 		//set 2: range
+	case 2:
+		genControler->setMinimumValue(0);
+		genControler->setMaximumValue(value);
+		name += "-";
+		name += std::to_string(value);
+		break;
+		//set 3:type
+	case 3:
+		switch (value) {
+		case 1:
+			name += "-rand";
+			genControler->genereteNumbers();
+			break;
+		case 2:
+			name += "-sorted";
+			genControler->sorted();
+			break;
+		case 3:
+			name += "-reverse";
+			genControler->reverted();
+			break;
+		case 4:
+			name += "-ashape";
+			genControler->aShape();
+			break;
+		case 5:
+			name += "-vshape";
+			genControler->vShape();
+			break;
+		case 6:
+			name += "const";
+			genControler->constType();
+		}
 	}
 }
 
-void menuHandler::runTest(int)
+void menuHandler::runTest(int testID)
 {
+	double times = 0;
+	std::string nameFinal = "";
+	switch(testID) {
+	case 1:
+		nameFinal = "quick" + name;
+		fileControler->setFileName(nameFinal);
+		sortControler->setNullArray();
+		for (int i = 0; i < 10; i++) {
+			//genControler->printArr(5);
+			//cout << endl;
+			sortControler->resetArray();
+			sortControler->setArray(genControler->getCopyOfArray());
+			//sortControler->printArr(5);
+			genControler->setCopyArrayNull();
+			//cout << endl;
+			timerControler->start();
+			sortControler->quickSort(0, sortControler->getNumbers() - 1);
+			timerControler->end();
+			//sortControler->printArr(5);
+			//cout << endl;
+			sortControler->checkIfSorted();
+			times += timerControler->getLastTime();
+			cout << i << ": " << timerControler->getLastTime() << endl;
+			fileControler->convertTime(timerControler->getLastTime());
+		}
+		times /= 10;
+		fileControler->convertTime(times);
+		fileControler->saveDataToFile();
+		cout << "Average time: " << times << endl;
+		break;
+	case 2:
+		nameFinal = "shell" + name;
+		fileControler->setFileName(nameFinal);
+		sortControler->setNullArray();
+		for (int i = 0; i < 10; i++) {
+			//genControler->printArr(5);
+			//cout << endl;
+			sortControler->resetArray();
+			sortControler->setArray(genControler->getCopyOfArray());
+			//sortControler->printArr(5);
+			genControler->setCopyArrayNull();
+			//cout << endl;
+			timerControler->start();
+			sortControler->shellSort();
+			timerControler->end();
+			//sortControler->printArr(5);
+			//cout << endl;
+			sortControler->checkIfSorted();
+			times += timerControler->getLastTime();
+			cout << i << ": " << timerControler->getLastTime() << endl;
+			fileControler->convertTime(timerControler->getLastTime());
+		}
+		times /= 10;
+		fileControler->convertTime(times);
+		fileControler->saveDataToFile();
+		cout << "Average time: " << times << endl;
+		break;
+	case 3:
+		nameFinal = "ins" + name;
+		fileControler->setFileName(nameFinal);
+		sortControler->setNullArray();
+		for (int i = 0; i < 10; i++) {
+			//genControler->printArr(5);
+			//cout << endl;
+			sortControler->resetArray();
+			sortControler->setArray(genControler->getCopyOfArray());
+			//sortControler->printArr(5);
+			genControler->setCopyArrayNull();
+			//cout << endl;
+			timerControler->start();
+			sortControler->insertionSort();
+			timerControler->end();
+			//sortControler->printArr(5);
+			//cout << endl;
+			sortControler->checkIfSorted();
+			times += timerControler->getLastTime();
+			cout << i << ": " << timerControler->getLastTime() << endl;
+			fileControler->convertTime(timerControler->getLastTime());
+		}
+		times /= 10;
+		fileControler->convertTime(times);
+		fileControler->saveDataToFile();
+		cout << "Average time: " << times << endl;
+		break;
+	case 4:
+		nameFinal = "sel" + name;
+		fileControler->setFileName(nameFinal);
+		sortControler->setNullArray();
+		for (int i = 0; i < 10; i++) {
+			//genControler->printArr(5);
+			//cout << endl;
+			sortControler->resetArray();
+			sortControler->setArray(genControler->getCopyOfArray());
+			//sortControler->printArr(5);
+			genControler->setCopyArrayNull();
+			//cout << endl;
+			timerControler->start();
+			sortControler->selectionSort();
+			timerControler->end();
+			//sortControler->printArr(5);
+			//cout << endl;
+			sortControler->checkIfSorted();
+			times += timerControler->getLastTime();
+			cout << i << ": " << timerControler->getLastTime() << endl;
+			fileControler->convertTime(timerControler->getLastTime());
+		}
+		times /= 10;
+		fileControler->convertTime(times);
+		fileControler->saveDataToFile();
+		cout << "Average time: " << times << endl;
+		break;
+	case 5:
+		nameFinal = "heap" + name;
+		fileControler->setFileName(nameFinal);
+		sortControler->setNullArray();
+		for (int i = 0; i < 10; i++) {
+			//genControler->printArr(5);
+			//cout << endl;
+			sortControler->resetArray();
+			sortControler->setArray(genControler->getCopyOfArray());
+			//sortControler->printArr(5);
+			genControler->setCopyArrayNull();
+			//cout << endl;
+			timerControler->start();
+			sortControler->heapSort();
+			timerControler->end();
+			//sortControler->printArr(5);
+			//cout << endl;
+			sortControler->checkIfSorted();
+			times += timerControler->getLastTime();
+			cout << i << ": " << timerControler->getLastTime() << endl;
+			fileControler->convertTime(timerControler->getLastTime());
+		}
+		times /= 10;
+		fileControler->convertTime(times);
+		fileControler->saveDataToFile();
+		cout << "Average time: " << times << endl;
+		break;
+	default:
+		errorMsg->setErrorType(1);
+		testChoiceMenu();
+		break;
+	}
+	//system("pause");
 }
 
 void menuHandler::runAllTests()
 {
+	cout << "Start test #1: " << endl;
+	runTest(1);
+	cout << "Start test #2: " << endl;
+	runTest(2);
+	cout << "Start test #3: " << endl;
+	runTest(3);
+	cout << "Start test #4: " << endl;
+	runTest(4);
+	cout << "Start test #5: " << endl;
+	runTest(5);
+	system("pause");
 }
 
-void menuHandler::exportData(int, int, double)
+void menuHandler::exportData(double)
 {
+
 }
