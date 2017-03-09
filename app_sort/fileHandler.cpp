@@ -46,5 +46,6 @@ void fileHandler::saveDataToFile()
 		fileOutputHandler << data;
 	}
 	fileOutputHandler.close();
+	data = "";
 }
 
