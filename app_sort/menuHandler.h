@@ -17,6 +17,7 @@ private:
 	timer *timerControler = new timer;
 	fileHandler *fileControler = new fileHandler;
 	errorHandler *errorMsg = new errorHandler;
+	int brexit();
 public:
 	menuHandler();
 	~menuHandler();
@@ -26,7 +27,7 @@ public:
 	void schemaMenuElements();
 	void schemaMenuRange();
 	void schemaMenuType();
-	int checkerInt(int, int);
+	int checkerInt(int);
 	void testChoiceMenu();
 	void dataSetter(int, int);
 	void runTest(int);

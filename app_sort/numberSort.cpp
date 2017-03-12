@@ -75,24 +75,6 @@ void numberSort::shellSort() {
 	tmp /= 3;
 	}
 }
-/*
-int tmp, i, j, x;
-for (tmp = 1; tmp < getNumbers(); tmp = 3 * tmp + 1) {
-tmp = tmp / 9;
-}
-while (tmp > 0) {
-for (int i = getNumbers() - tmp - 1; i >= 0; i--) {
-x = arr[i];
-j = i + tmp;
-while ((j < getNumbers()) && (x > arr[j])) {
-arr[j - tmp] = arr[j];
-j = j + tmp;
-}
-arr[j - tmp] = x;
-}
-tmp /= 3;
-}
-*/
 void numberSort::heapSortMax(int n, int i)
 {
 
@@ -129,7 +111,7 @@ void numberSort::quickSort(int left, int right)
 {
 	int i = left;
 	int j = right;
-	int x = arr[(left + right) / 2];
+	int x = arr[(left+right)/2];
 	do{
 		while (arr[i] < x)
 			i++;
@@ -145,9 +127,28 @@ void numberSort::quickSort(int left, int right)
 	if (left < j) quickSort(left, j);
 	if (right > i) quickSort(i, right);
 }
-void numberSort::quickSortIter()
+int numberSort::part(int left, int right)
 {
- //
+	int pivot = arr[right];
+	int pIndex = left;
+	for (int i = left; i < right - 1; i++) 
+	{
+		if (arr[i] <= pivot) 
+		{
+			swap(&arr[i], &arr[pIndex]);
+			pIndex++;
+		}
+	}
+	swap(&arr[pIndex], &arr[right]);
+	return pIndex;
+}
+void numberSort::quickSortIter(int left, int right)
+{
+		if (left < right) {
+			int index = part(left, right);
+			quickSortIter(left, index - 1);
+			quickSortIter(index + 1, right);
+	}
 }
 bool numberSort::checkIfSorted()
 {

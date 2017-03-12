@@ -21,6 +21,7 @@ public:
 	void heapSortBuild(int);
 	void heapSort();
 	void quickSort(int, int);
-	void quickSortIter();
+	int part(int, int);
+	void quickSortIter(int, int);
 	bool checkIfSorted();
 };

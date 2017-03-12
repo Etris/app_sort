@@ -3,6 +3,12 @@
 #include <Windows.h>
 using namespace std;
 
+int menuHandler::brexit()
+{
+	return 0;
+	exit(0);
+}
+
 menuHandler::menuHandler()
 {
 	this->startMenu();
@@ -44,45 +50,53 @@ void menuHandler::schemasMenu()
 
 void menuHandler::newSchemaMenu()
 {
-
+	int x, y;
+	cout << "enter n:" << endl;
+	x = checkerInt(1);
+	cout << "enter max range: " << endl;
+	y = checkerInt(2);
+	dataSetter(1, x);
+	dataSetter(2, y);
+	schemaMenuType();
+	testChoiceMenu();
 }
 
 void menuHandler::schemaMenuElements()
 {
 	// 10k elements, 100k elements, 250k elements, 750k, 500k elements, 1m elements, 2m elements, 5m elements, 10m elements, 20m elements
-	cout << "choose number of elements:\n[1]10k\n[2]100k elements\n[3]250k elements\n[4]500k elements\n[5]750k\n[6]1m\n[7]2m\n[8]5m\n[9]10m\n[10]20m\nUse: ";
+	cout << "choose number of elements:\n[1]5k\n[2]10k\n[3]15k\n[4]20k\n[5]25k\n[6]40k\n[7]50k\n[8]60k\n[9]75k\n[10]100k\nUse: ";
 	int x;
 	cin >> x;
 	switch (x) {
 	case 1:
-		dataSetter(1, 10000);
+		dataSetter(1, 5000);
 		break;
 	case 2:
-		dataSetter(1, 100000);
+		dataSetter(1, 10000);
 		break;
 	case 3:
-		dataSetter(1, 250000);
+		dataSetter(1, 15000);
 		break;
 	case 4:
-		dataSetter(1, 500000);
+		dataSetter(1, 20000);
 		break;
 	case 5:
-		dataSetter(1, 750000);
+		dataSetter(1, 25000);
 		break;
 	case 6:
-		dataSetter(1, 1000000);
+		dataSetter(1, 40000);
 		break;
 	case 7:
-		dataSetter(1, 2000000);
+		dataSetter(1, 50000);
 		break;
 	case 8:
-		dataSetter(1, 5000000);
+		dataSetter(1, 60000);
 		break;
 	case 9:
-		dataSetter(1, 10000000);
+		dataSetter(1, 75000);
 		break;
 	case 10:
-		dataSetter(1, 20000000);
+		dataSetter(1, 100000);
 		break;
 	default:
 		errorMsg->setErrorType(1);
@@ -151,8 +165,10 @@ void menuHandler::schemaMenuType()
 	}
 }
 
-int menuHandler::checkerInt(int set, int value)
+int menuHandler::checkerInt(int set)
 {
+	int value;
+	cin >> value;
 	switch (set) {
 	//set 1: numbers;
 	case 1:
@@ -160,7 +176,7 @@ int menuHandler::checkerInt(int set, int value)
 			return value;
 		}
 		else {
-			this->schemaMenuElements();
+			this->newSchemaMenu();
 		}
 		break;
 	//set 2: range
@@ -169,7 +185,7 @@ int menuHandler::checkerInt(int set, int value)
 			return value;
 		}
 		else {
-			this->schemaMenuRange();
+			this->newSchemaMenu();
 		}
 		break;
 	default:
@@ -181,7 +197,7 @@ int menuHandler::checkerInt(int set, int value)
 void menuHandler::testChoiceMenu()
 {
 	int x;
-	cout << "Sort methods:\n[1]Quick\n[2]Shell\n[3]Insertion\n[4]Selection\n[5]Heap\n[6]All methods\nUse:";
+	cout << "Sort methods:\n[1]Quick\n[2]Shell\n[3]Insertion\n[4]Selection\n[5]Heap\n[6]All methods\n[7]Exit\nUse:";
 	cin >> x;
 	switch (x) {
 	case 1:
@@ -201,11 +217,16 @@ void menuHandler::testChoiceMenu()
 		break;
 	case 6:
 		runAllTests();
+		break;
+	case 7:
+		brexit();
+		break;
 	default:
 		errorMsg->setErrorType(1);
 		testChoiceMenu();
 		break;
 	}
+	brexit();
 }
 
 void menuHandler::dataSetter(int set, int value)
@@ -249,7 +270,7 @@ void menuHandler::dataSetter(int set, int value)
 			break;
 		case 6:
 			name += "const";
-			genControler->constType();
+			genControler->constType();	
 		}
 	}
 }
@@ -273,6 +294,7 @@ void menuHandler::runTest(int testID)
 			//cout << endl;
 			timerControler->start();
 			sortControler->quickSort(0, sortControler->getNumbers() - 1);
+			//sortControler->quickSortIter(0, sortControler->getNumbers() - 1);
 			timerControler->end();
 			//sortControler->printArr(5);
 			//cout << endl;
@@ -400,6 +422,7 @@ void menuHandler::runTest(int testID)
 		break;
 	}
 	//system("pause");
+	this->brexit();
 }
 
 void menuHandler::runAllTests()
@@ -415,6 +438,7 @@ void menuHandler::runAllTests()
 	cout << "Start test #5: " << endl;
 	runTest(5);
 	system("pause");
+	this->brexit();
 }
 
 void menuHandler::exportData(double)
