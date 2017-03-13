@@ -2,6 +2,7 @@
 #include "numberGenerator.h"
 #include <iostream>
 #include <algorithm>
+#include <time.h>
 numberSort::numberSort()
 {
 	setNumbers(0);
@@ -129,7 +130,8 @@ void numberSort::quickSort(int left, int right)
 }
 int numberSort::part(int left, int right)
 {
-	int pivot = arr[right];
+	int piv = rand() % (getNumbers() - 1) + 0;
+	int pivot = arr[piv];
 	int pIndex = left;
 	for (int i = left; i < right - 1; i++) 
 	{
@@ -145,6 +147,7 @@ int numberSort::part(int left, int right)
 void numberSort::quickSortIter(int left, int right)
 {
 		if (left < right) {
+			srand(time(nullptr));
 			int index = part(left, right);
 			quickSortIter(left, index - 1);
 			quickSortIter(index + 1, right);
